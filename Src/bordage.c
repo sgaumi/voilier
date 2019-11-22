@@ -61,7 +61,7 @@ void get_angle(){
 	}
 	else{
 		val = LL_TIM_GetCounter(TIM2);
-		angle = ((val%720)/2);	//calcul angle
+		angle = (((float)(val%720))/2.)-180;	//calcul angle
 	}
 	
 
@@ -71,9 +71,65 @@ void get_angle(){
 
 //sevo-moteur
 
+float abso(float a){
+	if (a<0){
+		a=-a;
+	}
+	return(a);
+}
 
-//moteur-girouette
+void generatePWM (){
+	
+//faire une pwm envoyé au servo-moteur
+
+//utiliser timer1 sur PA8 pour faire pwm
+//mettre PA8 en output car de là sort la pwm initialisée en timer CH1 
+//CCR1 en fonction de alpha
+	float alpha2; 
+	//on reçoit alpha entre -180 et 180 donc on prend la valeur absolue
+	if (abso(angle)< 45) { 
+		alpha2 = 0. ; }
+	else { //angle entre 45 et 180
+		alpha2 = (abso(angle)-45.)/135. *90 ; //angle du moteur entre 0 et 90
+	}
+	
+	float beta = (alpha2/180.)*100 ; //passe l'angle en pourcentage
+	
+	int CCR1Max = 6545; //ARR*0,1
+	int CCR1Min = 3272;  //ARR*0,05
+	LL_TIM_OC_SetCompareCH1(TIM1, beta*(CCR1Max-CCR1Min)+CCR1Min);
+		
+	
+}
+
+void timer_pwm_init(){
+	int Psc =21;
+	int Arr = 65454; 
+	LL_TIM_InitTypeDef Timer;
+	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_TIM1);
+	
+	Timer.Autoreload= Arr ;
+	Timer.Prescaler= Psc;
+	Timer.ClockDivision=LL_TIM_CLOCKDIVISION_DIV1;
+	Timer.CounterMode=LL_TIM_COUNTERMODE_UP;
+	Timer.RepetitionCounter=0;
+	
+	LL_TIM_Init(TIM1,&Timer); //TIM1
+
+}
 
 
+void gpio_servom_init() {
 
-//batterie?
+	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
+
+	LL_GPIO_InitTypeDef pa8;
+	pa8.Pin = LL_GPIO_PIN_8;  //PA8
+	pa8.Mode = LL_GPIO_MODE_ALTERNATE;
+	pa8.Speed = LL_GPIO_MODE_OUTPUT_10MHz;
+	pa8.OutputType = LL_GPIO_OUTPUT_PUSHPULL ;
+	pa8.Pull = LL_GPIO_PULL_UP ;
+
+	LL_GPIO_Init(GPIOA, &pa8);
+}
+

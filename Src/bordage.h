@@ -10,3 +10,11 @@ void gpio_gigi_init();
 void timer_gigi_init();
 
 void get_angle();
+
+void generatePWM();
+
+float abso(float a);
+
+void gpio_servom_init();
+
+void timer_pwm_init();

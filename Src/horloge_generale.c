@@ -22,6 +22,7 @@ void run(void){ //a mettre dans le while du main
 	
 	if (girouette==5){
 		get_angle();
+		generatePWM();
 		girouette=0;
 	}
 	

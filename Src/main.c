@@ -46,6 +46,10 @@ int main(void)
 	gpio_gigi_init();
 	timer_gigi_init();
 	
+	//init servo-moteur + PWM
+	gpio_servom_init();
+	timer_pwm_init();
+	
 	//on attend le passage à 0 de la girouette (initialisation) -> tant qu'on est pas passé à 0, le bateau ne bouge pas
 	int non_init = 1;
 	while(non_init){
@@ -93,7 +97,7 @@ void SystemClock_Config(void)
   /* Enable HSE oscillator */
 	// ********* Commenter la ligne ci-dessous pour MCBSTM32 *****************
 	// ********* Conserver la ligne si Nucléo*********************************
-  LL_RCC_HSE_EnableBypass();
+  //LL_RCC_HSE_EnableBypass();
   LL_RCC_HSE_Enable();
   while(LL_RCC_HSE_IsReady() != 1)
   {
