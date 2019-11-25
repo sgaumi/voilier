@@ -14,20 +14,20 @@ static float angle = 0. ;	//en degré
 void gpio_gigi_init(){
 	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
 	
-	//signal A sur PA0 (TIM2_CH1)
-	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_0, LL_GPIO_MODE_FLOATING);
+	//signal A sur PA6 (TIM3_CH1)
+	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_6, LL_GPIO_MODE_FLOATING);
 	
-	//signal B sur PA1 (TIM2_CH2)
-	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_1, LL_GPIO_MODE_FLOATING);
+	//signal B sur PA7 (TIM3_CH2)
+	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_7, LL_GPIO_MODE_FLOATING);
 	
-	//index sur PA2
-	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_2, LL_GPIO_MODE_FLOATING);
+	//index sur PA5
+	LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_5, LL_GPIO_MODE_FLOATING);
 	
 
 }
 
 void timer_gigi_init(){
-	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
+	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM3);
 	
 	LL_TIM_ENCODER_InitTypeDef tim_init;
 	tim_init.EncoderMode = LL_TIM_ENCODERMODE_X4_TI12;
@@ -40,28 +40,35 @@ void timer_gigi_init(){
 	tim_init.IC2Prescaler = LL_TIM_ICPSC_DIV1;
 	tim_init.IC2Filter = LL_TIM_IC_FILTER_FDIV1;
 	
-	LL_TIM_ENCODER_Init(TIM2, &tim_init); //initialisation encoder mode
+	LL_TIM_ENCODER_Init(TIM3, &tim_init); //initialisation encoder mode
 	
-	LL_TIM_EnableIT_UPDATE(TIM2);	//autorise les interruptions
+	LL_TIM_EnableIT_UPDATE(TIM3);	//autorise les interruptions
 	
-	LL_TIM_EnableCounter(TIM2);	//activation
+	LL_TIM_EnableCounter(TIM3);	//activation
 	
 
 }
 
+int test;
 
 void get_angle(){
 	
 	int val;
 	
-	if ( LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_2)){	//passage a 0
-			LL_TIM_SetCounter(TIM2, 0x0000);
+	if ( LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_5)){	//passage a 0
+			LL_TIM_SetCounter(TIM3, 0x8000); //32768
 			angle = 0.;
 		
 	}
 	else{
-		val = LL_TIM_GetCounter(TIM2);
-		angle = (((float)(val%720))/2.)-180;	//calcul angle
+		val = LL_TIM_GetCounter(TIM3);
+		angle = (((float)((val-32768)%1440))/4.);		//calcul angle
+		if (angle>180.){
+			angle=angle-360;
+		}
+		else if(angle<(-180.)){
+			angle=angle+360;
+		}
 	}
 	
 

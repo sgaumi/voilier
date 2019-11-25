@@ -39,8 +39,8 @@ int main(void)
   /* Configure the system clock to 72 MHz */
   SystemClock_Config();
 	
-	//init horloge generale
-	timer_HG_init();
+/*	//init horloge generale
+	timer_HG_init();*/
 	
 	//init girouette
 	gpio_gigi_init();
@@ -53,11 +53,15 @@ int main(void)
 	//on attend le passage à 0 de la girouette (initialisation) -> tant qu'on est pas passé à 0, le bateau ne bouge pas
 	int non_init = 1;
 	while(non_init){
-		if(LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_2)){
-			LL_TIM_SetCounter(TIM2, 0x0000);
+		//if(1){
+		if(LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_5)){
+			LL_TIM_SetCounter(TIM3, 0x8000); //32768
 			non_init = 0;
 		}
 	}
+	
+	//init horloge generale
+	timer_HG_init();
   
   /* Infinite loop */
   while (1)
