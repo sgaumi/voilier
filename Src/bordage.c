@@ -49,7 +49,6 @@ void timer_gigi_init(){
 
 }
 
-int test;
 
 void get_angle(){
 	
@@ -122,6 +121,14 @@ void timer_pwm_init(){
 	Timer.RepetitionCounter=0;
 	
 	LL_TIM_Init(TIM1,&Timer); //TIM1
+	
+	LL_TIM_OC_SetMode (TIM1, LL_TIM_CHANNEL_CH1,LL_TIM_OCMODE_PWM1);
+	TIM1->BDTR |= TIM_BDTR_MOE; //uniquement pour TIM 1 et 8
+	
+	TIM1->CCER |= TIM_CCER_CC1E;
+	
+	
+	LL_TIM_EnableCounter(TIM1);
 
 }
 
