@@ -3,7 +3,7 @@
 <title>Static Call Graph - [NUCLEO-F103RB\NUCLEO-F103RB.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image NUCLEO-F103RB\NUCLEO-F103RB.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Nov 25 18:12:31 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 29 13:42:46 2019
 <BR><P>
 <H3>Maximum Stack Usage =        160 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -19,7 +19,6 @@ Mutually Recursive functions
  <LI><a href="#[6]">SVC_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[6]">SVC_Handler</a><BR>
  <LI><a href="#[7]">DebugMon_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[7]">DebugMon_Handler</a><BR>
  <LI><a href="#[8]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8]">PendSV_Handler</a><BR>
- <LI><a href="#[9]">SysTick_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[9]">SysTick_Handler</a><BR>
  <LI><a href="#[1c]">ADC1_2_IRQHandler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1c]">ADC1_2_IRQHandler</a><BR>
 </UL>
 <P>
@@ -62,7 +61,7 @@ Function Pointers
  <LI><a href="#[2d]">SPI1_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[2e]">SPI2_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[6]">SVC_Handler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
- <LI><a href="#[9]">SysTick_Handler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
+ <LI><a href="#[9]">SysTick_Handler</a> from horloge_generale.o(i.SysTick_Handler) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[36]">SystemInit</a> from system_stm32f1xx.o(i.SystemInit) referenced from startup_stm32f103xb.o(.text)
  <LI><a href="#[c]">TAMPER_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[22]">TIM1_BRK_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
@@ -71,7 +70,7 @@ Function Pointers
  <LI><a href="#[23]">TIM1_UP_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[26]">TIM2_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[27]">TIM3_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
- <LI><a href="#[28]">TIM4_IRQHandler</a> from horloge_generale.o(i.TIM4_IRQHandler) referenced from startup_stm32f103xb.o(RESET)
+ <LI><a href="#[28]">TIM4_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[2f]">USART1_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[30]">USART2_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[31]">USART3_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
@@ -82,7 +81,7 @@ Function Pointers
  <LI><a href="#[a]">WWDG_IRQHandler</a> from startup_stm32f103xb.o(.text) referenced from startup_stm32f103xb.o(RESET)
  <LI><a href="#[37]">__main</a> from entry.o(.ARM.Collect$$$$00000000) referenced from startup_stm32f103xb.o(.text)
  <LI><a href="#[35]">main</a> from main.o(i.main) referenced from entry9a.o(.ARM.Collect$$$$0000000B)
- <LI><a href="#[38]">run_IT</a> from horloge_generale.o(i.run_IT) referenced from horloge_generale.o(i.timer_HG_init)
+ <LI><a href="#[38]">run_IT</a> from horloge_generale.o(i.run_IT) referenced from horloge_generale.o(i.timer_HG_init_st)
 </UL>
 <P>
 <H3>
@@ -167,13 +166,6 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PendSV_Handler
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
-</UL>
-<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
-</UL>
-<BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
@@ -284,6 +276,9 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
 <P><STRONG><a name="[27]"></a>TIM3_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
+</UL>
+<P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
 <P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f103xb.o(.text))
@@ -512,9 +507,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;assert_failed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_pwm_init
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_HG_init
 </UL>
 
+<P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, horloge_generale.o(i.SysTick_Handler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysTick_Handler
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
+</UL>
 <P><STRONG><a name="[51]"></a>SystemClock_Config</STRONG> (Thumb, 212 bytes, Stack size 8 bytes, main.o(i.SystemClock_Config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SystemClock_Config
 </UL>
@@ -526,11 +525,6 @@ Global Symbols
 
 <P><STRONG><a name="[36]"></a>SystemInit</STRONG> (Thumb, 70 bytes, Stack size 0 bytes, system_stm32f1xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(.text)
-</UL>
-<P><STRONG><a name="[28]"></a>TIM4_IRQHandler</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, horloge_generale.o(i.TIM4_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM4_IRQHandler
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
 <P><STRONG><a name="[75]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
@@ -552,8 +546,8 @@ Global Symbols
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[65]"></a>funITinit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, horloge_generale.o(i.funITinit))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_HG_init
+<P><STRONG><a name="[65]"></a>funITinit_st</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, horloge_generale.o(i.funITinit_st))
+<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_HG_init_st
 </UL>
 
 <P><STRONG><a name="[56]"></a>generatePWM</STRONG> (Thumb, 180 bytes, Stack size 64 bytes, bordage.o(i.generatePWM))
@@ -612,7 +606,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_pwm_init
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_gigi_init
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_HG_init
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_HG_init_st
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_servom_init
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_gigi_init
@@ -630,13 +624,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[38]"></a>run_IT</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, horloge_generale.o(i.run_IT))
-<BR>[Address Reference Count : 1]<UL><LI> horloge_generale.o(i.timer_HG_init)
+<BR>[Address Reference Count : 1]<UL><LI> horloge_generale.o(i.timer_HG_init_st)
 </UL>
-<P><STRONG><a name="[63]"></a>timer_HG_init</STRONG> (Thumb, 170 bytes, Stack size 40 bytes, horloge_generale.o(i.timer_HG_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = timer_HG_init &rArr; LL_TIM_Init
+<P><STRONG><a name="[63]"></a>timer_HG_init_st</STRONG> (Thumb, 70 bytes, Stack size 4 bytes, horloge_generale.o(i.timer_HG_init_st))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = timer_HG_init_st
 </UL>
-<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;funITinit
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LL_TIM_Init
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;funITinit_st
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

@@ -9,5 +9,6 @@ nucleo-f103rb\horloge_generale.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Incl
 nucleo-f103rb\horloge_generale.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h
 nucleo-f103rb\horloge_generale.o: ..\Inc\system_stm32f1xx.h
 nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_tim.h
+nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_cortex.h
 nucleo-f103rb\horloge_generale.o: ..\Src\bordage.h
 nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_gpio.h

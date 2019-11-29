@@ -61,7 +61,8 @@ int main(void)
 	}
 	
 	//init horloge generale
-	timer_HG_init();
+	//timer_HG_init();
+	timer_HG_init_st();
   
   /* Infinite loop */
   while (1)

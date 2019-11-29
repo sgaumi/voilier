@@ -426,6 +426,11 @@
               <FileType>1</FileType>
               <FilePath>..\LLDrivers\src\stm32f1xx_ll_gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f1xx_ll_cortex.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\LLDrivers\inc\stm32f1xx_ll_cortex.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -885,6 +890,11 @@
               <FileName>stm32f1xx_ll_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\LLDrivers\src\stm32f1xx_ll_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f1xx_ll_cortex.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\LLDrivers\inc\stm32f1xx_ll_cortex.h</FilePath>
             </File>
           </Files>
         </Group>

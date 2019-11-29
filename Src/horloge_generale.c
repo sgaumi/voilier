@@ -2,12 +2,14 @@
 
 #include "stm32f1xx_ll_bus.h"
 #include "stm32f1xx_ll_tim.h"
+#include "stm32f1xx_ll_cortex.h"
 
 #include "bordage.h"
 
 //REMPLACER TIM4 PAR systick
 
-void (*Ptr_ItFct_TIM4)(void);
+/*void (*Ptr_ItFct_TIM4)(void);*/
+void (*Ptr_ItFct_SysTick)(void);
 
 //////////////////////////////////////////////////////////////////////////
 int girouette;
@@ -34,11 +36,14 @@ void run(void){ //a mettre dans le while du main
 
 
 //////////////////////////////////////////////////////////////////////////
-void funITinit(void (*IT_function)(void)){
+/*void funITinit(void (*IT_function)(void)){
 	Ptr_ItFct_TIM4=IT_function;
+}*/
+void funITinit_st(void (*IT_function)(void)){
+	Ptr_ItFct_SysTick=IT_function;
 }
-	
-void timer_HG_init(){
+//////////////////////////////////////////////////////////////////////////	
+/*void timer_HG_init(){
 	
 	//init timer
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM4);
@@ -67,11 +72,31 @@ void timer_HG_init(){
 	LL_TIM_EnableCounter(TIM4);
 	
 	girouette=0;
-}
+}*/
 
-void TIM4_IRQHandler(void)
+void timer_HG_init_st(){
+	
+	funITinit_st(run_IT);
+	
+	NVIC_EnableIRQ(SysTick_IRQn);
+	
+	LL_SYSTICK_EnableIT();
+	
+	SysTick->LOAD = 0x000AFC80; //pour des IT de 10ms
+	
+	girouette=0;
+	
+}
+//////////////////////////////////////////////////////////////////////////////////
+/*void TIM4_IRQHandler(void)
 {
 	// rabaisser le flag d'IT
 	LL_TIM_ClearFlag_UPDATE(TIM4);
 	(*Ptr_ItFct_TIM4)();
+}*/
+
+void SysTick_Handler(void)
+{
+	//pas besoin de rabaisser le flag pour systick?
+	(*Ptr_ItFct_SysTick)();
 }	
