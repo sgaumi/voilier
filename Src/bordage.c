@@ -96,15 +96,13 @@ void generatePWM (){
 	if (abso(angle)< 45) { 
 		alpha2 = 0. ; }
 	else { //angle entre 45 et 180
-		alpha2 = (abso(angle)-45.)/135. *90 ; //angle du moteur entre 0 et 90
+		alpha2 = (abso(angle)-45.)/135. ; //angle du moteur en pourcentage
+		
 	}
-	
-	float beta = (alpha2/180.)*100 ; //passe l'angle en pourcentage
 	
 	int CCR1Max = 6545; //ARR*0,1
 	int CCR1Min = 3272;  //ARR*0,05
-	LL_TIM_OC_SetCompareCH1(TIM1, beta*(CCR1Max-CCR1Min)+CCR1Min);
-		
+	LL_TIM_OC_SetCompareCH1(TIM1, (alpha2*(CCR1Max-CCR1Min)+CCR1Min));
 	
 }
 

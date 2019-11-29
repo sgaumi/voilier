@@ -20,7 +20,6 @@ Section Cross References
     bordage.o(i.generatePWM) refers to f2d.o(.text) for __aeabi_f2d
     bordage.o(i.generatePWM) refers to dadd.o(.text) for __aeabi_dsub
     bordage.o(i.generatePWM) refers to ddiv.o(.text) for __aeabi_ddiv
-    bordage.o(i.generatePWM) refers to dmul.o(.text) for __aeabi_dmul
     bordage.o(i.generatePWM) refers to d2f.o(.text) for __aeabi_d2f
     bordage.o(i.generatePWM) refers to fflti.o(.text) for __aeabi_i2f
     bordage.o(i.generatePWM) refers to fmul.o(.text) for __aeabi_fmul
@@ -140,8 +139,6 @@ Section Cross References
     dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
     dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
     dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
-    dmul.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
-    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
     ddiv.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
     ddiv.o(.text) refers to depilogue.o(.text) for _double_round
     fflti.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
@@ -259,22 +256,22 @@ Image Symbol Table
 
     ../Src/main.c                            0x00000000   Number         0  main.o ABSOLUTE
     ../Src/system_stm32f1xx.c                0x00000000   Number         0  system_stm32f1xx.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/f2d.c                  0x00000000   Number         0  f2d.o ABSOLUTE
@@ -286,7 +283,6 @@ Image Symbol Table
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixui.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
-    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ..\LLDrivers\src\stm32f1xx_ll_gpio.c     0x00000000   Number         0  stm32f1xx_ll_gpio.o ABSOLUTE
     ..\LLDrivers\src\stm32f1xx_ll_rcc.c      0x00000000   Number         0  stm32f1xx_ll_rcc.o ABSOLUTE
     ..\LLDrivers\src\stm32f1xx_ll_tim.c      0x00000000   Number         0  stm32f1xx_ll_tim.o ABSOLUTE
@@ -294,6 +290,7 @@ Image Symbol Table
     ..\Src\bordage.c                         0x00000000   Number         0  bordage.o ABSOLUTE
     ..\Src\horloge_generale.c                0x00000000   Number         0  horloge_generale.o ABSOLUTE
     ..\Src\main.c                            0x00000000   Number         0  main.o ABSOLUTE
+    ..\Src\plateau.c                         0x00000000   Number         0  plateau.o ABSOLUTE
     ..\Src\system_stm32f1xx.c                0x00000000   Number         0  system_stm32f1xx.o ABSOLUTE
     ..\\LLDrivers\\src\\stm32f1xx_ll_gpio.c  0x00000000   Number         0  stm32f1xx_ll_gpio.o ABSOLUTE
     ..\\LLDrivers\\src\\stm32f1xx_ll_rcc.c   0x00000000   Number         0  stm32f1xx_ll_rcc.o ABSOLUTE
@@ -323,60 +320,59 @@ Image Symbol Table
     .text                                    0x08000124   Section        0  fadd.o(.text)
     .text                                    0x080001d4   Section        0  fmul.o(.text)
     .text                                    0x08000238   Section        0  dadd.o(.text)
-    .text                                    0x08000386   Section        0  dmul.o(.text)
-    .text                                    0x0800046a   Section        0  ddiv.o(.text)
-    .text                                    0x08000548   Section        0  fflti.o(.text)
-    .text                                    0x0800055a   Section        0  ffixui.o(.text)
-    .text                                    0x08000582   Section        0  f2d.o(.text)
-    .text                                    0x080005a8   Section       48  cdcmple.o(.text)
-    .text                                    0x080005d8   Section       48  cdrcmple.o(.text)
-    .text                                    0x08000608   Section        0  d2f.o(.text)
-    .text                                    0x08000640   Section       20  cfcmple.o(.text)
-    .text                                    0x08000654   Section        0  llshl.o(.text)
-    .text                                    0x08000672   Section        0  llsshr.o(.text)
-    .text                                    0x08000696   Section        0  fepilogue.o(.text)
-    .text                                    0x08000696   Section        0  iusefp.o(.text)
-    .text                                    0x08000704   Section        0  depilogue.o(.text)
-    .text                                    0x080007c0   Section       36  init.o(.text)
-    .text                                    0x080007e4   Section        0  llushr.o(.text)
-    i.LL_APB2_GRP1_EnableClock               0x08000804   Section        0  bordage.o(i.LL_APB2_GRP1_EnableClock)
-    LL_APB2_GRP1_EnableClock                 0x08000805   Thumb Code    24  bordage.o(i.LL_APB2_GRP1_EnableClock)
-    i.LL_GPIO_Init                           0x08000820   Section        0  stm32f1xx_ll_gpio.o(i.LL_GPIO_Init)
-    i.LL_GPIO_SetPinMode                     0x08000a18   Section        0  bordage.o(i.LL_GPIO_SetPinMode)
-    LL_GPIO_SetPinMode                       0x08000a19   Thumb Code    44  bordage.o(i.LL_GPIO_SetPinMode)
-    i.LL_Init1msTick                         0x08000a44   Section        0  stm32f1xx_ll_utils.o(i.LL_Init1msTick)
-    i.LL_SetSystemCoreClock                  0x08000a60   Section        0  stm32f1xx_ll_utils.o(i.LL_SetSystemCoreClock)
-    i.LL_TIM_ENCODER_Init                    0x08000a6c   Section        0  stm32f1xx_ll_tim.o(i.LL_TIM_ENCODER_Init)
-    i.LL_TIM_EnableCounter                   0x08000d1c   Section        0  bordage.o(i.LL_TIM_EnableCounter)
-    LL_TIM_EnableCounter                     0x08000d1d   Thumb Code    10  bordage.o(i.LL_TIM_EnableCounter)
-    i.LL_TIM_Init                            0x08000d28   Section        0  stm32f1xx_ll_tim.o(i.LL_TIM_Init)
-    i.LL_TIM_OC_SetMode                      0x08000e3c   Section        0  bordage.o(i.LL_TIM_OC_SetMode)
-    LL_TIM_OC_SetMode                        0x08000e3d   Thumb Code    98  bordage.o(i.LL_TIM_OC_SetMode)
-    i.SysTick_Handler                        0x08000ea8   Section        0  horloge_generale.o(i.SysTick_Handler)
-    i.SystemClock_Config                     0x08000eb8   Section        0  main.o(i.SystemClock_Config)
-    i.SystemInit                             0x08000f98   Section        0  system_stm32f1xx.o(i.SystemInit)
-    i.__scatterload_copy                     0x08000ff0   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08000ffe   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08001000   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.abso                                   0x0800100e   Section        0  bordage.o(i.abso)
-    i.assert_failed                          0x08001024   Section        0  main.o(i.assert_failed)
-    i.funITinit_st                           0x08001028   Section        0  horloge_generale.o(i.funITinit_st)
-    i.generatePWM                            0x08001034   Section        0  bordage.o(i.generatePWM)
-    i.get_angle                              0x08001108   Section        0  bordage.o(i.get_angle)
-    i.gpio_gigi_init                         0x080011d8   Section        0  bordage.o(i.gpio_gigi_init)
-    i.gpio_servom_init                       0x0800120c   Section        0  bordage.o(i.gpio_servom_init)
-    i.main                                   0x08001240   Section        0  main.o(i.main)
-    i.run                                    0x08001298   Section        0  horloge_generale.o(i.run)
-    i.run_IT                                 0x080012b8   Section        0  horloge_generale.o(i.run_IT)
-    i.timer_HG_init_st                       0x080012c8   Section        0  horloge_generale.o(i.timer_HG_init_st)
-    i.timer_gigi_init                        0x0800131c   Section        0  bordage.o(i.timer_gigi_init)
-    i.timer_pwm_init                         0x08001384   Section        0  bordage.o(i.timer_pwm_init)
-    .constdata                               0x080013e8   Section       35  bordage.o(.constdata)
-    OFFSET_TAB_CCMRx                         0x080013e8   Data           7  bordage.o(.constdata)
-    SHIFT_TAB_OCxx                           0x080013ef   Data           7  bordage.o(.constdata)
-    SHIFT_TAB_ICxx                           0x080013f6   Data           7  bordage.o(.constdata)
-    SHIFT_TAB_CCxP                           0x080013fd   Data           7  bordage.o(.constdata)
-    SHIFT_TAB_OISx                           0x08001404   Data           7  bordage.o(.constdata)
+    .text                                    0x08000386   Section        0  ddiv.o(.text)
+    .text                                    0x08000464   Section        0  fflti.o(.text)
+    .text                                    0x08000476   Section        0  ffixui.o(.text)
+    .text                                    0x0800049e   Section        0  f2d.o(.text)
+    .text                                    0x080004c4   Section       48  cdcmple.o(.text)
+    .text                                    0x080004f4   Section       48  cdrcmple.o(.text)
+    .text                                    0x08000524   Section        0  d2f.o(.text)
+    .text                                    0x0800055c   Section       20  cfcmple.o(.text)
+    .text                                    0x08000570   Section        0  llshl.o(.text)
+    .text                                    0x0800058e   Section        0  llsshr.o(.text)
+    .text                                    0x080005b2   Section        0  iusefp.o(.text)
+    .text                                    0x080005b2   Section        0  fepilogue.o(.text)
+    .text                                    0x08000620   Section        0  depilogue.o(.text)
+    .text                                    0x080006dc   Section       36  init.o(.text)
+    .text                                    0x08000700   Section        0  llushr.o(.text)
+    i.LL_APB2_GRP1_EnableClock               0x08000720   Section        0  bordage.o(i.LL_APB2_GRP1_EnableClock)
+    LL_APB2_GRP1_EnableClock                 0x08000721   Thumb Code    24  bordage.o(i.LL_APB2_GRP1_EnableClock)
+    i.LL_GPIO_Init                           0x0800073c   Section        0  stm32f1xx_ll_gpio.o(i.LL_GPIO_Init)
+    i.LL_GPIO_SetPinMode                     0x08000934   Section        0  bordage.o(i.LL_GPIO_SetPinMode)
+    LL_GPIO_SetPinMode                       0x08000935   Thumb Code    44  bordage.o(i.LL_GPIO_SetPinMode)
+    i.LL_Init1msTick                         0x08000960   Section        0  stm32f1xx_ll_utils.o(i.LL_Init1msTick)
+    i.LL_SetSystemCoreClock                  0x0800097c   Section        0  stm32f1xx_ll_utils.o(i.LL_SetSystemCoreClock)
+    i.LL_TIM_ENCODER_Init                    0x08000988   Section        0  stm32f1xx_ll_tim.o(i.LL_TIM_ENCODER_Init)
+    i.LL_TIM_EnableCounter                   0x08000c38   Section        0  bordage.o(i.LL_TIM_EnableCounter)
+    LL_TIM_EnableCounter                     0x08000c39   Thumb Code    10  bordage.o(i.LL_TIM_EnableCounter)
+    i.LL_TIM_Init                            0x08000c44   Section        0  stm32f1xx_ll_tim.o(i.LL_TIM_Init)
+    i.LL_TIM_OC_SetMode                      0x08000d58   Section        0  bordage.o(i.LL_TIM_OC_SetMode)
+    LL_TIM_OC_SetMode                        0x08000d59   Thumb Code    98  bordage.o(i.LL_TIM_OC_SetMode)
+    i.SysTick_Handler                        0x08000dc4   Section        0  horloge_generale.o(i.SysTick_Handler)
+    i.SystemClock_Config                     0x08000dd4   Section        0  main.o(i.SystemClock_Config)
+    i.SystemInit                             0x08000eb4   Section        0  system_stm32f1xx.o(i.SystemInit)
+    i.__scatterload_copy                     0x08000f0c   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08000f1a   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08000f1c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.abso                                   0x08000f2a   Section        0  bordage.o(i.abso)
+    i.assert_failed                          0x08000f40   Section        0  main.o(i.assert_failed)
+    i.funITinit_st                           0x08000f44   Section        0  horloge_generale.o(i.funITinit_st)
+    i.generatePWM                            0x08000f50   Section        0  bordage.o(i.generatePWM)
+    i.get_angle                              0x08000fe4   Section        0  bordage.o(i.get_angle)
+    i.gpio_gigi_init                         0x080010b4   Section        0  bordage.o(i.gpio_gigi_init)
+    i.gpio_servom_init                       0x080010e8   Section        0  bordage.o(i.gpio_servom_init)
+    i.main                                   0x0800111c   Section        0  main.o(i.main)
+    i.run                                    0x08001174   Section        0  horloge_generale.o(i.run)
+    i.run_IT                                 0x08001194   Section        0  horloge_generale.o(i.run_IT)
+    i.timer_HG_init_st                       0x080011a4   Section        0  horloge_generale.o(i.timer_HG_init_st)
+    i.timer_gigi_init                        0x080011f8   Section        0  bordage.o(i.timer_gigi_init)
+    i.timer_pwm_init                         0x08001260   Section        0  bordage.o(i.timer_pwm_init)
+    .constdata                               0x080012c4   Section       35  bordage.o(.constdata)
+    OFFSET_TAB_CCMRx                         0x080012c4   Data           7  bordage.o(.constdata)
+    SHIFT_TAB_OCxx                           0x080012cb   Data           7  bordage.o(.constdata)
+    SHIFT_TAB_ICxx                           0x080012d2   Data           7  bordage.o(.constdata)
+    SHIFT_TAB_CCxP                           0x080012d9   Data           7  bordage.o(.constdata)
+    SHIFT_TAB_OISx                           0x080012e0   Data           7  bordage.o(.constdata)
     .data                                    0x20000000   Section        4  bordage.o(.data)
     angle                                    0x20000000   Data           4  bordage.o(.data)
     .data                                    0x20000004   Section        8  horloge_generale.o(.data)
@@ -465,56 +461,55 @@ Image Symbol Table
     __aeabi_dadd                             0x08000239   Thumb Code   322  dadd.o(.text)
     __aeabi_dsub                             0x0800037b   Thumb Code     6  dadd.o(.text)
     __aeabi_drsub                            0x08000381   Thumb Code     6  dadd.o(.text)
-    __aeabi_dmul                             0x08000387   Thumb Code   228  dmul.o(.text)
-    __aeabi_ddiv                             0x0800046b   Thumb Code   222  ddiv.o(.text)
-    __aeabi_i2f                              0x08000549   Thumb Code    18  fflti.o(.text)
-    __aeabi_f2uiz                            0x0800055b   Thumb Code    40  ffixui.o(.text)
-    __aeabi_f2d                              0x08000583   Thumb Code    38  f2d.o(.text)
-    __aeabi_cdcmpeq                          0x080005a9   Thumb Code     0  cdcmple.o(.text)
-    __aeabi_cdcmple                          0x080005a9   Thumb Code    48  cdcmple.o(.text)
-    __aeabi_cdrcmple                         0x080005d9   Thumb Code    48  cdrcmple.o(.text)
-    __aeabi_d2f                              0x08000609   Thumb Code    56  d2f.o(.text)
-    __aeabi_cfcmpeq                          0x08000641   Thumb Code     0  cfcmple.o(.text)
-    __aeabi_cfcmple                          0x08000641   Thumb Code    20  cfcmple.o(.text)
-    __aeabi_llsl                             0x08000655   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x08000655   Thumb Code     0  llshl.o(.text)
-    __aeabi_lasr                             0x08000673   Thumb Code    36  llsshr.o(.text)
-    _ll_sshift_r                             0x08000673   Thumb Code     0  llsshr.o(.text)
-    __I$use$fp                               0x08000697   Thumb Code     0  iusefp.o(.text)
-    _float_round                             0x08000697   Thumb Code    18  fepilogue.o(.text)
-    _float_epilogue                          0x080006a9   Thumb Code    92  fepilogue.o(.text)
-    _double_round                            0x08000705   Thumb Code    30  depilogue.o(.text)
-    _double_epilogue                         0x08000723   Thumb Code   156  depilogue.o(.text)
-    __scatterload                            0x080007c1   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x080007c1   Thumb Code     0  init.o(.text)
-    __aeabi_llsr                             0x080007e5   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x080007e5   Thumb Code     0  llushr.o(.text)
-    LL_GPIO_Init                             0x08000821   Thumb Code   442  stm32f1xx_ll_gpio.o(i.LL_GPIO_Init)
-    LL_Init1msTick                           0x08000a45   Thumb Code    28  stm32f1xx_ll_utils.o(i.LL_Init1msTick)
-    LL_SetSystemCoreClock                    0x08000a61   Thumb Code     6  stm32f1xx_ll_utils.o(i.LL_SetSystemCoreClock)
-    LL_TIM_ENCODER_Init                      0x08000a6d   Thumb Code   640  stm32f1xx_ll_tim.o(i.LL_TIM_ENCODER_Init)
-    LL_TIM_Init                              0x08000d29   Thumb Code   228  stm32f1xx_ll_tim.o(i.LL_TIM_Init)
-    SysTick_Handler                          0x08000ea9   Thumb Code    10  horloge_generale.o(i.SysTick_Handler)
-    SystemClock_Config                       0x08000eb9   Thumb Code   212  main.o(i.SystemClock_Config)
-    SystemInit                               0x08000f99   Thumb Code    70  system_stm32f1xx.o(i.SystemInit)
-    __scatterload_copy                       0x08000ff1   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08000fff   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08001001   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    abso                                     0x0800100f   Thumb Code    22  bordage.o(i.abso)
-    assert_failed                            0x08001025   Thumb Code     4  main.o(i.assert_failed)
-    funITinit_st                             0x08001029   Thumb Code     6  horloge_generale.o(i.funITinit_st)
-    generatePWM                              0x08001035   Thumb Code   180  bordage.o(i.generatePWM)
-    get_angle                                0x08001109   Thumb Code   178  bordage.o(i.get_angle)
-    gpio_gigi_init                           0x080011d9   Thumb Code    46  bordage.o(i.gpio_gigi_init)
-    gpio_servom_init                         0x0800120d   Thumb Code    42  bordage.o(i.gpio_servom_init)
-    main                                     0x08001241   Thumb Code    78  main.o(i.main)
-    run                                      0x08001299   Thumb Code    26  horloge_generale.o(i.run)
-    run_IT                                   0x080012b9   Thumb Code    12  horloge_generale.o(i.run_IT)
-    timer_HG_init_st                         0x080012c9   Thumb Code    70  horloge_generale.o(i.timer_HG_init_st)
-    timer_gigi_init                          0x0800131d   Thumb Code    96  bordage.o(i.timer_gigi_init)
-    timer_pwm_init                           0x08001385   Thumb Code    94  bordage.o(i.timer_pwm_init)
-    Region$$Table$$Base                      0x0800140c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800142c   Number         0  anon$$obj.o(Region$$Table)
+    __aeabi_ddiv                             0x08000387   Thumb Code   222  ddiv.o(.text)
+    __aeabi_i2f                              0x08000465   Thumb Code    18  fflti.o(.text)
+    __aeabi_f2uiz                            0x08000477   Thumb Code    40  ffixui.o(.text)
+    __aeabi_f2d                              0x0800049f   Thumb Code    38  f2d.o(.text)
+    __aeabi_cdcmpeq                          0x080004c5   Thumb Code     0  cdcmple.o(.text)
+    __aeabi_cdcmple                          0x080004c5   Thumb Code    48  cdcmple.o(.text)
+    __aeabi_cdrcmple                         0x080004f5   Thumb Code    48  cdrcmple.o(.text)
+    __aeabi_d2f                              0x08000525   Thumb Code    56  d2f.o(.text)
+    __aeabi_cfcmpeq                          0x0800055d   Thumb Code     0  cfcmple.o(.text)
+    __aeabi_cfcmple                          0x0800055d   Thumb Code    20  cfcmple.o(.text)
+    __aeabi_llsl                             0x08000571   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x08000571   Thumb Code     0  llshl.o(.text)
+    __aeabi_lasr                             0x0800058f   Thumb Code    36  llsshr.o(.text)
+    _ll_sshift_r                             0x0800058f   Thumb Code     0  llsshr.o(.text)
+    __I$use$fp                               0x080005b3   Thumb Code     0  iusefp.o(.text)
+    _float_round                             0x080005b3   Thumb Code    18  fepilogue.o(.text)
+    _float_epilogue                          0x080005c5   Thumb Code    92  fepilogue.o(.text)
+    _double_round                            0x08000621   Thumb Code    30  depilogue.o(.text)
+    _double_epilogue                         0x0800063f   Thumb Code   156  depilogue.o(.text)
+    __scatterload                            0x080006dd   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x080006dd   Thumb Code     0  init.o(.text)
+    __aeabi_llsr                             0x08000701   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x08000701   Thumb Code     0  llushr.o(.text)
+    LL_GPIO_Init                             0x0800073d   Thumb Code   442  stm32f1xx_ll_gpio.o(i.LL_GPIO_Init)
+    LL_Init1msTick                           0x08000961   Thumb Code    28  stm32f1xx_ll_utils.o(i.LL_Init1msTick)
+    LL_SetSystemCoreClock                    0x0800097d   Thumb Code     6  stm32f1xx_ll_utils.o(i.LL_SetSystemCoreClock)
+    LL_TIM_ENCODER_Init                      0x08000989   Thumb Code   640  stm32f1xx_ll_tim.o(i.LL_TIM_ENCODER_Init)
+    LL_TIM_Init                              0x08000c45   Thumb Code   228  stm32f1xx_ll_tim.o(i.LL_TIM_Init)
+    SysTick_Handler                          0x08000dc5   Thumb Code    10  horloge_generale.o(i.SysTick_Handler)
+    SystemClock_Config                       0x08000dd5   Thumb Code   212  main.o(i.SystemClock_Config)
+    SystemInit                               0x08000eb5   Thumb Code    70  system_stm32f1xx.o(i.SystemInit)
+    __scatterload_copy                       0x08000f0d   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08000f1b   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08000f1d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    abso                                     0x08000f2b   Thumb Code    22  bordage.o(i.abso)
+    assert_failed                            0x08000f41   Thumb Code     4  main.o(i.assert_failed)
+    funITinit_st                             0x08000f45   Thumb Code     6  horloge_generale.o(i.funITinit_st)
+    generatePWM                              0x08000f51   Thumb Code   128  bordage.o(i.generatePWM)
+    get_angle                                0x08000fe5   Thumb Code   178  bordage.o(i.get_angle)
+    gpio_gigi_init                           0x080010b5   Thumb Code    46  bordage.o(i.gpio_gigi_init)
+    gpio_servom_init                         0x080010e9   Thumb Code    42  bordage.o(i.gpio_servom_init)
+    main                                     0x0800111d   Thumb Code    78  main.o(i.main)
+    run                                      0x08001175   Thumb Code    26  horloge_generale.o(i.run)
+    run_IT                                   0x08001195   Thumb Code    12  horloge_generale.o(i.run_IT)
+    timer_HG_init_st                         0x080011a5   Thumb Code    70  horloge_generale.o(i.timer_HG_init_st)
+    timer_gigi_init                          0x080011f9   Thumb Code    96  bordage.o(i.timer_gigi_init)
+    timer_pwm_init                           0x08001261   Thumb Code    94  bordage.o(i.timer_pwm_init)
+    Region$$Table$$Base                      0x080012e8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001308   Number         0  anon$$obj.o(Region$$Table)
     Ptr_ItFct_SysTick                        0x20000004   Data           4  horloge_generale.o(.data)
     girouette                                0x20000008   Data           4  horloge_generale.o(.data)
     SystemCoreClock                          0x2000000c   Data           4  system_stm32f1xx.o(.data)
@@ -528,85 +523,84 @@ Memory Map of the image
 
   Image Entry point : 0x080000ed
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000143c, Max: 0x00020000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001318, Max: 0x00020000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000142c, Max: 0x00020000, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x08000000   0x08000000   0x000000ec   Data   RO          682    RESET               startup_stm32f103xb.o
-    0x080000ec   0x080000ec   0x00000000   Code   RO          687  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x080000ec   0x080000ec   0x00000004   Code   RO          714    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x080000f0   0x080000f0   0x00000004   Code   RO          717    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x080000f4   0x080000f4   0x00000000   Code   RO          719    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x080000f4   0x080000f4   0x00000000   Code   RO          721    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x080000f4   0x080000f4   0x00000008   Code   RO          722    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x080000fc   0x080000fc   0x00000000   Code   RO          724    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x080000fc   0x080000fc   0x00000000   Code   RO          726    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x080000fc   0x080000fc   0x00000004   Code   RO          715    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x08000100   0x08000100   0x00000024   Code   RO          683    .text               startup_stm32f103xb.o
-    0x08000124   0x08000124   0x000000b0   Code   RO          690    .text               mf_w.l(fadd.o)
-    0x080001d4   0x080001d4   0x00000064   Code   RO          692    .text               mf_w.l(fmul.o)
-    0x08000238   0x08000238   0x0000014e   Code   RO          694    .text               mf_w.l(dadd.o)
-    0x08000386   0x08000386   0x000000e4   Code   RO          696    .text               mf_w.l(dmul.o)
-    0x0800046a   0x0800046a   0x000000de   Code   RO          698    .text               mf_w.l(ddiv.o)
-    0x08000548   0x08000548   0x00000012   Code   RO          700    .text               mf_w.l(fflti.o)
-    0x0800055a   0x0800055a   0x00000028   Code   RO          702    .text               mf_w.l(ffixui.o)
-    0x08000582   0x08000582   0x00000026   Code   RO          704    .text               mf_w.l(f2d.o)
-    0x080005a8   0x080005a8   0x00000030   Code   RO          706    .text               mf_w.l(cdcmple.o)
-    0x080005d8   0x080005d8   0x00000030   Code   RO          708    .text               mf_w.l(cdrcmple.o)
-    0x08000608   0x08000608   0x00000038   Code   RO          710    .text               mf_w.l(d2f.o)
-    0x08000640   0x08000640   0x00000014   Code   RO          712    .text               mf_w.l(cfcmple.o)
-    0x08000654   0x08000654   0x0000001e   Code   RO          728    .text               mc_w.l(llshl.o)
-    0x08000672   0x08000672   0x00000024   Code   RO          730    .text               mc_w.l(llsshr.o)
-    0x08000696   0x08000696   0x00000000   Code   RO          732    .text               mc_w.l(iusefp.o)
-    0x08000696   0x08000696   0x0000006e   Code   RO          733    .text               mf_w.l(fepilogue.o)
-    0x08000704   0x08000704   0x000000ba   Code   RO          735    .text               mf_w.l(depilogue.o)
-    0x080007be   0x080007be   0x00000002   PAD
-    0x080007c0   0x080007c0   0x00000024   Code   RO          737    .text               mc_w.l(init.o)
-    0x080007e4   0x080007e4   0x00000020   Code   RO          739    .text               mc_w.l(llushr.o)
-    0x08000804   0x08000804   0x0000001c   Code   RO           95    i.LL_APB2_GRP1_EnableClock  bordage.o
-    0x08000820   0x08000820   0x000001f8   Code   RO          597    i.LL_GPIO_Init      stm32f1xx_ll_gpio.o
-    0x08000a18   0x08000a18   0x0000002c   Code   RO           96    i.LL_GPIO_SetPinMode  bordage.o
-    0x08000a44   0x08000a44   0x0000001c   Code   RO          338    i.LL_Init1msTick    stm32f1xx_ll_utils.o
-    0x08000a60   0x08000a60   0x0000000c   Code   RO          345    i.LL_SetSystemCoreClock  stm32f1xx_ll_utils.o
-    0x08000a6c   0x08000a6c   0x000002b0   Code   RO          444    i.LL_TIM_ENCODER_Init  stm32f1xx_ll_tim.o
-    0x08000d1c   0x08000d1c   0x0000000a   Code   RO           97    i.LL_TIM_EnableCounter  bordage.o
-    0x08000d26   0x08000d26   0x00000002   PAD
-    0x08000d28   0x08000d28   0x00000114   Code   RO          450    i.LL_TIM_Init       stm32f1xx_ll_tim.o
-    0x08000e3c   0x08000e3c   0x0000006c   Code   RO           98    i.LL_TIM_OC_SetMode  bordage.o
-    0x08000ea8   0x08000ea8   0x00000010   Code   RO          190    i.SysTick_Handler   horloge_generale.o
-    0x08000eb8   0x08000eb8   0x000000e0   Code   RO            4    i.SystemClock_Config  main.o
-    0x08000f98   0x08000f98   0x00000058   Code   RO          647    i.SystemInit        system_stm32f1xx.o
-    0x08000ff0   0x08000ff0   0x0000000e   Code   RO          743    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08000ffe   0x08000ffe   0x00000002   Code   RO          744    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08001000   0x08001000   0x0000000e   Code   RO          745    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800100e   0x0800100e   0x00000016   Code   RO           99    i.abso              bordage.o
-    0x08001024   0x08001024   0x00000004   Code   RO            5    i.assert_failed     main.o
-    0x08001028   0x08001028   0x0000000c   Code   RO          191    i.funITinit_st      horloge_generale.o
-    0x08001034   0x08001034   0x000000d4   Code   RO          100    i.generatePWM       bordage.o
-    0x08001108   0x08001108   0x000000d0   Code   RO          101    i.get_angle         bordage.o
-    0x080011d8   0x080011d8   0x00000034   Code   RO          102    i.gpio_gigi_init    bordage.o
-    0x0800120c   0x0800120c   0x00000034   Code   RO          103    i.gpio_servom_init  bordage.o
-    0x08001240   0x08001240   0x00000058   Code   RO            6    i.main              main.o
-    0x08001298   0x08001298   0x00000020   Code   RO          192    i.run               horloge_generale.o
-    0x080012b8   0x080012b8   0x00000010   Code   RO          193    i.run_IT            horloge_generale.o
-    0x080012c8   0x080012c8   0x00000054   Code   RO          194    i.timer_HG_init_st  horloge_generale.o
-    0x0800131c   0x0800131c   0x00000068   Code   RO          104    i.timer_gigi_init   bordage.o
-    0x08001384   0x08001384   0x00000064   Code   RO          105    i.timer_pwm_init    bordage.o
-    0x080013e8   0x080013e8   0x00000023   Data   RO          106    .constdata          bordage.o
-    0x0800140b   0x0800140b   0x00000001   PAD
-    0x0800140c   0x0800140c   0x00000020   Data   RO          741    Region$$Table       anon$$obj.o
-
-
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800142c, Size: 0x00000410, Max: 0x00005000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001308, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0800142c   0x00000004   Data   RW          107    .data               bordage.o
-    0x20000004   0x08001430   0x00000008   Data   RW          196    .data               horloge_generale.o
-    0x2000000c   0x08001438   0x00000004   Data   RW          649    .data               system_stm32f1xx.o
-    0x20000010        -       0x00000400   Zero   RW          680    STACK               startup_stm32f103xb.o
+    0x08000000   0x08000000   0x000000ec   Data   RO          685    RESET               startup_stm32f103xb.o
+    0x080000ec   0x080000ec   0x00000000   Code   RO          690  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080000ec   0x080000ec   0x00000004   Code   RO          715    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080000f0   0x080000f0   0x00000004   Code   RO          718    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080000f4   0x080000f4   0x00000000   Code   RO          720    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080000f4   0x080000f4   0x00000000   Code   RO          722    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080000f4   0x080000f4   0x00000008   Code   RO          723    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080000fc   0x080000fc   0x00000000   Code   RO          725    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x080000fc   0x080000fc   0x00000000   Code   RO          727    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x080000fc   0x080000fc   0x00000004   Code   RO          716    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000100   0x08000100   0x00000024   Code   RO          686    .text               startup_stm32f103xb.o
+    0x08000124   0x08000124   0x000000b0   Code   RO          693    .text               mf_w.l(fadd.o)
+    0x080001d4   0x080001d4   0x00000064   Code   RO          695    .text               mf_w.l(fmul.o)
+    0x08000238   0x08000238   0x0000014e   Code   RO          697    .text               mf_w.l(dadd.o)
+    0x08000386   0x08000386   0x000000de   Code   RO          699    .text               mf_w.l(ddiv.o)
+    0x08000464   0x08000464   0x00000012   Code   RO          701    .text               mf_w.l(fflti.o)
+    0x08000476   0x08000476   0x00000028   Code   RO          703    .text               mf_w.l(ffixui.o)
+    0x0800049e   0x0800049e   0x00000026   Code   RO          705    .text               mf_w.l(f2d.o)
+    0x080004c4   0x080004c4   0x00000030   Code   RO          707    .text               mf_w.l(cdcmple.o)
+    0x080004f4   0x080004f4   0x00000030   Code   RO          709    .text               mf_w.l(cdrcmple.o)
+    0x08000524   0x08000524   0x00000038   Code   RO          711    .text               mf_w.l(d2f.o)
+    0x0800055c   0x0800055c   0x00000014   Code   RO          713    .text               mf_w.l(cfcmple.o)
+    0x08000570   0x08000570   0x0000001e   Code   RO          729    .text               mc_w.l(llshl.o)
+    0x0800058e   0x0800058e   0x00000024   Code   RO          731    .text               mc_w.l(llsshr.o)
+    0x080005b2   0x080005b2   0x00000000   Code   RO          733    .text               mc_w.l(iusefp.o)
+    0x080005b2   0x080005b2   0x0000006e   Code   RO          734    .text               mf_w.l(fepilogue.o)
+    0x08000620   0x08000620   0x000000ba   Code   RO          736    .text               mf_w.l(depilogue.o)
+    0x080006da   0x080006da   0x00000002   PAD
+    0x080006dc   0x080006dc   0x00000024   Code   RO          738    .text               mc_w.l(init.o)
+    0x08000700   0x08000700   0x00000020   Code   RO          740    .text               mc_w.l(llushr.o)
+    0x08000720   0x08000720   0x0000001c   Code   RO           95    i.LL_APB2_GRP1_EnableClock  bordage.o
+    0x0800073c   0x0800073c   0x000001f8   Code   RO          600    i.LL_GPIO_Init      stm32f1xx_ll_gpio.o
+    0x08000934   0x08000934   0x0000002c   Code   RO           96    i.LL_GPIO_SetPinMode  bordage.o
+    0x08000960   0x08000960   0x0000001c   Code   RO          341    i.LL_Init1msTick    stm32f1xx_ll_utils.o
+    0x0800097c   0x0800097c   0x0000000c   Code   RO          348    i.LL_SetSystemCoreClock  stm32f1xx_ll_utils.o
+    0x08000988   0x08000988   0x000002b0   Code   RO          447    i.LL_TIM_ENCODER_Init  stm32f1xx_ll_tim.o
+    0x08000c38   0x08000c38   0x0000000a   Code   RO           97    i.LL_TIM_EnableCounter  bordage.o
+    0x08000c42   0x08000c42   0x00000002   PAD
+    0x08000c44   0x08000c44   0x00000114   Code   RO          453    i.LL_TIM_Init       stm32f1xx_ll_tim.o
+    0x08000d58   0x08000d58   0x0000006c   Code   RO           98    i.LL_TIM_OC_SetMode  bordage.o
+    0x08000dc4   0x08000dc4   0x00000010   Code   RO          190    i.SysTick_Handler   horloge_generale.o
+    0x08000dd4   0x08000dd4   0x000000e0   Code   RO            4    i.SystemClock_Config  main.o
+    0x08000eb4   0x08000eb4   0x00000058   Code   RO          650    i.SystemInit        system_stm32f1xx.o
+    0x08000f0c   0x08000f0c   0x0000000e   Code   RO          744    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08000f1a   0x08000f1a   0x00000002   Code   RO          745    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08000f1c   0x08000f1c   0x0000000e   Code   RO          746    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08000f2a   0x08000f2a   0x00000016   Code   RO           99    i.abso              bordage.o
+    0x08000f40   0x08000f40   0x00000004   Code   RO            5    i.assert_failed     main.o
+    0x08000f44   0x08000f44   0x0000000c   Code   RO          191    i.funITinit_st      horloge_generale.o
+    0x08000f50   0x08000f50   0x00000094   Code   RO          100    i.generatePWM       bordage.o
+    0x08000fe4   0x08000fe4   0x000000d0   Code   RO          101    i.get_angle         bordage.o
+    0x080010b4   0x080010b4   0x00000034   Code   RO          102    i.gpio_gigi_init    bordage.o
+    0x080010e8   0x080010e8   0x00000034   Code   RO          103    i.gpio_servom_init  bordage.o
+    0x0800111c   0x0800111c   0x00000058   Code   RO            6    i.main              main.o
+    0x08001174   0x08001174   0x00000020   Code   RO          192    i.run               horloge_generale.o
+    0x08001194   0x08001194   0x00000010   Code   RO          193    i.run_IT            horloge_generale.o
+    0x080011a4   0x080011a4   0x00000054   Code   RO          194    i.timer_HG_init_st  horloge_generale.o
+    0x080011f8   0x080011f8   0x00000068   Code   RO          104    i.timer_gigi_init   bordage.o
+    0x08001260   0x08001260   0x00000064   Code   RO          105    i.timer_pwm_init    bordage.o
+    0x080012c4   0x080012c4   0x00000023   Data   RO          106    .constdata          bordage.o
+    0x080012e7   0x080012e7   0x00000001   PAD
+    0x080012e8   0x080012e8   0x00000020   Data   RO          742    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001308, Size: 0x00000410, Max: 0x00005000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x08001308   0x00000004   Data   RW          107    .data               bordage.o
+    0x20000004   0x0800130c   0x00000008   Data   RW          196    .data               horloge_generale.o
+    0x2000000c   0x08001314   0x00000004   Data   RW          652    .data               system_stm32f1xx.o
+    0x20000010        -       0x00000400   Zero   RW          683    STACK               startup_stm32f103xb.o
 
 
 ==============================================================================
@@ -616,7 +610,7 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       940        106         35          4          0      40376   bordage.o
+       876         94         35          4          0      40332   bordage.o
        160         36          0          8          0      53508   horloge_generale.o
        316         22          0          0          0     387952   main.o
         36          8        236          0       1024        744   startup_stm32f103xb.o
@@ -626,7 +620,7 @@ Image component sizes
         88         18          0          4          0       1063   system_stm32f1xx.o
 
     ----------------------------------------------------------------------
-      3050        354        304         16       1024     525891   Object Totals
+      2986        342        304         16       1024     525847   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          1          0          0          0   (incl. Padding)
 
@@ -655,7 +649,6 @@ Image component sizes
        334          0          0          0          0        148   dadd.o
        222          0          0          0          0        100   ddiv.o
        186          0          0          0          0        176   depilogue.o
-       228          0          0          0          0         96   dmul.o
         38          0          0          0          0         68   f2d.o
        176          0          0          0          0        140   fadd.o
        110          0          0          0          0        168   fepilogue.o
@@ -664,7 +657,7 @@ Image component sizes
        100          0          0          0          0         76   fmul.o
 
     ----------------------------------------------------------------------
-      1810         16          0          0          0       1672   Library Totals
+      1582         16          0          0          0       1576   Library Totals
          2          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
@@ -672,10 +665,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
        184         16          0          0          0        272   mc_w.l
-      1624          0          0          0          0       1400   mf_w.l
+      1396          0          0          0          0       1304   mf_w.l
 
     ----------------------------------------------------------------------
-      1810         16          0          0          0       1672   Library Totals
+      1582         16          0          0          0       1576   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -684,15 +677,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4860        370        304         16       1024     525739   Grand Totals
-      4860        370        304         16       1024     525739   ELF Image Totals
-      4860        370        304         16          0          0   ROM Totals
+      4568        358        304         16       1024     525651   Grand Totals
+      4568        358        304         16       1024     525651   ELF Image Totals
+      4568        358        304         16          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5164 (   5.04kB)
+    Total RO  Size (Code + RO Data)                 4872 (   4.76kB)
     Total RW  Size (RW Data + ZI Data)              1040 (   1.02kB)
-    Total ROM Size (Code + RO Data + RW Data)       5180 (   5.06kB)
+    Total ROM Size (Code + RO Data + RW Data)       4888 (   4.77kB)
 
 ==============================================================================
 

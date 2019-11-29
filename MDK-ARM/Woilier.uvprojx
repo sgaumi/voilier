@@ -401,6 +401,11 @@
               <FileType>1</FileType>
               <FilePath>..\Src\horloge_generale.c</FilePath>
             </File>
+            <File>
+              <FileName>plateau.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\plateau.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -865,6 +870,11 @@
               <FileName>horloge_generale.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\horloge_generale.c</FilePath>
+            </File>
+            <File>
+              <FileName>plateau.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\plateau.c</FilePath>
             </File>
           </Files>
         </Group>
