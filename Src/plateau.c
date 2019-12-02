@@ -3,15 +3,19 @@
 #include "stm32f1xx_ll_bus.h" // Pour l'activation des horloges
 #include "stm32f1xx_ll_tim.h"  // Pour le timer
 
+#include "plateau.h"
 #include "bordage.h" //pour abso
+
+float vitesse;
+int sens;
 
 void gpio_RF_init(){
 
 	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOB);
 	//PB6
-	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_6, LL_GPIO_MODE_FLOATING); //a determiner (alternate?)
+	LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_6, LL_GPIO_MODE_FLOATING);  
 	//PB7
-	//LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_7, LL_GPIO_MODE_FLOATING); //a determiner
+	//LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_7, LL_GPIO_MODE_FLOATING);
 
 
 }
@@ -22,8 +26,8 @@ void timer_RF_init(){
 	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM4);
 	
 	LL_TIM_InitTypeDef timer_init;
-	timer_init.Autoreload=999;
-	timer_init.Prescaler=719;
+	timer_init.Autoreload=65530; 
+	timer_init.Prescaler=71; //pour avoir 1 000 000 Tick/s (72 000 000/(psc+1))
 	timer_init.ClockDivision=LL_TIM_CLOCKDIVISION_DIV1;
 	timer_init.CounterMode=LL_TIM_COUNTERMODE_UP;
 	timer_init.RepetitionCounter=0;
@@ -56,14 +60,32 @@ void timer_RF_init(){
 	TIM4->CCER |= 0x0001;
 	TIM4->CCER |= 1<<4;
 	
+	LL_TIM_EnableCounter(TIM4);	
 	
+	vitesse=0.;
+	sens=0;
+	
+}
+
+void get_vitesse_sens(){
+	int pulse = LL_TIM_OC_GetCompareCH2(TIM4) +1;
+	int period = LL_TIM_OC_GetCompareCH1(TIM4) +1;
+	
+	vitesse = ((float)pulse/1000.)*2. -3.; //vitesse entre -1 et 1
+	
+	if (vitesse>=0.){
+		sens=1;
+	}
+	else{
+		sens=0;
+	}
 	
 	
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-void initializeGPIO() {
+void gpio_mcc_init() {
 	
 	LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);  //GPIOA sur APB2
 	//configuration de la PA1 pour générer la PWM
@@ -74,33 +96,9 @@ void initializeGPIO() {
 	pa1.Speed = LL_GPIO_MODE_OUTPUT_10MHz;
 	pa1.OutputType = LL_GPIO_OUTPUT_PUSHPULL ;
 	pa1.Pull = LL_GPIO_PULL_UP ;
-
 	
-}		
+	LL_GPIO_Init(GPIOA, &pa1);
 	
-void initializeTimerPWM() {
-	
-	int Arr = 65454 ;
-	int Psc = 54 ;
-
-	LL_TIM_InitTypeDef Timer;
-	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
-
-	//timer correspondant à la PWM
-	Timer.Autoreload= Arr;
-	Timer.Prescaler= Psc;
-	Timer.ClockDivision=LL_TIM_CLOCKDIVISION_DIV1;
-	Timer.CounterMode=LL_TIM_COUNTERMODE_UP;
-	Timer.RepetitionCounter=0;
-	
-	LL_TIM_OC_SetMode (TIM1, LL_TIM_CHANNEL_CH1,LL_TIM_OCMODE_PWM1);
-	//rajouter les deux lignes des flags
-	
-}	
-	
-	
-	
-void initializeSens() {
 	//configuration de la PA2 qui gère le sens (en 0 ou 1)
 	//sens PA2 tim 2 ch3
 	LL_GPIO_InitTypeDef pa2;
@@ -109,10 +107,42 @@ void initializeSens() {
 	pa2.Speed = LL_GPIO_MODE_OUTPUT_10MHz;
 	pa2.OutputType = LL_GPIO_OUTPUT_PUSHPULL ;
 	pa2.Pull = LL_GPIO_PULL_UP ;
-}
+	
+	LL_GPIO_Init(GPIOA, &pa2);
+
+	
+}		
+	
+void timer_pwm_mcc_init() {
+	
+	int Arr = 65454 ;
+	int Psc = 54 ;
+
+	LL_TIM_InitTypeDef Timer;
+	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2);
+
+	//timer correspondant à la PWM (TIM2)
+	Timer.Autoreload= Arr;
+	Timer.Prescaler= Psc;
+	Timer.ClockDivision=LL_TIM_CLOCKDIVISION_DIV1;
+	Timer.CounterMode=LL_TIM_COUNTERMODE_UP;
+	Timer.RepetitionCounter=0;
+		
+	LL_TIM_Init(TIM4,&Timer);
+	
+	LL_TIM_OC_SetMode (TIM2, LL_TIM_CHANNEL_CH1,LL_TIM_OCMODE_PWM1);
+
+	//rajouter les deux lignes des flags
+	TIM2->BDTR |= TIM_BDTR_MOE;
+	TIM2->CCER |= TIM_CCER_CC1E;
+	
+	LL_TIM_EnableCounter(TIM2);
+	
+}	
 	
 	
-void bougerPlateau (float vitesse, int sens ) {
+	
+void bougerPlateau() {
 
 	if (sens) { 	//peut-être dans l'autre sens
 		GPIOA -> ODR |= 0x00 ; 

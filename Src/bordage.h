@@ -11,7 +11,7 @@ void timer_gigi_init();
 
 void get_angle();
 
-void generatePWM();
+void bougerVoile();
 
 float abso(float a);
 

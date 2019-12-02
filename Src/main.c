@@ -22,10 +22,10 @@
 
 #include "horloge_generale.h"
 #include "bordage.h"
+#include "plateau.h"
 
 void  SystemClock_Config(void);
 
-/* Private functions ---------------------------------------------------------*/
 
 /**
   * @brief  Main program
@@ -39,9 +39,6 @@ int main(void)
   /* Configure the system clock to 72 MHz */
   SystemClock_Config();
 	
-/*	//init horloge generale
-	timer_HG_init();*/
-	
 	//init girouette
 	gpio_gigi_init();
 	timer_gigi_init();
@@ -49,6 +46,14 @@ int main(void)
 	//init servo-moteur + PWM
 	gpio_servom_init();
 	timer_pwm_init();
+	
+	//init RF (avec PWM input)
+	gpio_RF_init();
+	timer_RF_init();
+	
+	//init mcc + PWM
+	gpio_mcc_init();
+	timer_pwm_mcc_init();
 	
 	//on attend le passage à 0 de la girouette (initialisation) -> tant qu'on est pas passé à 0, le bateau ne bouge pas
 	int non_init = 1;

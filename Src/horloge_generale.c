@@ -5,6 +5,7 @@
 #include "stm32f1xx_ll_cortex.h"
 
 #include "bordage.h"
+#include "plateau.h"
 
 //REMPLACER TIM4 PAR systick
 
@@ -13,21 +14,27 @@ void (*Ptr_ItFct_SysTick)(void);
 
 //////////////////////////////////////////////////////////////////////////
 int girouette;
+int plateau;
 
 void run_IT(void){
 	
 	girouette++;
-
-
+	plateau++;
 
 }
 
 void run(void){ //a mettre dans le while du main
 	
-	if (girouette==5){
+	if (girouette==5){ //toute les 50ms
 		get_angle();
-		generatePWM();
+		bougerVoile();
 		girouette=0;
+	}
+	
+	if (plateau==2){ //toute les 20ms
+		get_vitesse_sens();
+		bougerPlateau();
+		plateau=0;
 	}
 	
 	
@@ -85,6 +92,7 @@ void timer_HG_init_st(){
 	SysTick->LOAD = 0x000AFC80; //pour des IT de 10ms
 	
 	girouette=0;
+	plateau=0;
 	
 }
 //////////////////////////////////////////////////////////////////////////////////

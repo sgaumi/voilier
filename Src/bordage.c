@@ -27,7 +27,7 @@ void gpio_gigi_init(){
 }
 
 void timer_gigi_init(){
-	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM3);
+	LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM3); //TIM3
 	
 	LL_TIM_ENCODER_InitTypeDef tim_init;
 	tim_init.EncoderMode = LL_TIM_ENCODERMODE_X4_TI12;
@@ -84,7 +84,7 @@ float abso(float a){
 	return(a);
 }
 
-void generatePWM (){
+void bougerVoile(){
 	
 //faire une pwm envoyé au servo-moteur
 
