@@ -72,8 +72,8 @@ void get_vitesse_sens(){
 	int period = LL_TIM_OC_GetCompareCH1(TIM4) +1;
 	
 	pulse=pulse;
-	//vitesse = ((float)(pulse)/1000.)*2. -3.; //vitesse entre -1 et 1
-	vitesse=-0.5;	
+	vitesse = ((float)(pulse)/1000.)*2. -3.; //vitesse entre -1 et 1
+	//vitesse=-0.;	
 	if (vitesse>=0.){
 		sens=1;
 	}
@@ -111,6 +111,7 @@ void gpio_mcc_init() {
 	
 	LL_GPIO_Init(GPIOA, &pa2);
 
+
 	
 }		
 	
@@ -137,6 +138,7 @@ void timer_pwm_mcc_init() {
 	TIM2->CCER |= TIM_CCER_CC2E;
 	
 	LL_TIM_EnableCounter(TIM2);
+	
 	
 }	
 	
