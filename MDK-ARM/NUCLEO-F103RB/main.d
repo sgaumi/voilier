@@ -16,3 +16,4 @@ nucleo-f103rb\main.o: ..\LLDrivers\inc\stm32f1xx_ll_tim.h
 nucleo-f103rb\main.o: ../Src/bordage.h
 nucleo-f103rb\main.o: ..\LLDrivers\inc\stm32f1xx_ll_gpio.h
 nucleo-f103rb\main.o: ../Src/bordage.h
+nucleo-f103rb\main.o: ../Src/plateau.h

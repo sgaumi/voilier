@@ -12,3 +12,4 @@ nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_tim.h
 nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_cortex.h
 nucleo-f103rb\horloge_generale.o: ..\Src\bordage.h
 nucleo-f103rb\horloge_generale.o: ..\LLDrivers\inc\stm32f1xx_ll_gpio.h
+nucleo-f103rb\horloge_generale.o: ..\Src\plateau.h
